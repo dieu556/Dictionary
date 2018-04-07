@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="676.0" prefWidth="966.0" styleClass="paneMain" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionaryen_vi.HomeController">
+   <children>
+      <Pane layoutX="14.0" layoutY="144.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="201.0" styleClass="pane1" stylesheets="@../style/style.css">
+         <children>
+            <Button fx:id="btn_anhviet" alignment="CENTER" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlebtn_anhviet" prefHeight="45.0" prefWidth="183.0" styleClass="buttonCustomed" stylesheets="@../style/style.css" text="Anh-Viet">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_vietanh" alignment="CENTER" layoutX="8.0" layoutY="73.0" mnemonicParsing="false" onAction="#handlebtn_vietanh" prefHeight="45.0" prefWidth="183.0" styleClass="buttonCustomed" stylesheets="@../style/style.css" text="Viet-Anh">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_infor" alignment="CENTER" layoutX="113.0" layoutY="444.0" maxHeight="60.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handlebtn_infor" prefHeight="60.0" prefWidth="60.0" styleClass="buttonAbout" stylesheets="@../style/style.css">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </Button>
+            <Button id="btn_caidat" fx:id="btn_caidat" alignment="CENTER" layoutX="27.0" layoutY="444.0" maxHeight="60.0" maxWidth="60.0" mnemonicParsing="false" onAction="#handlebtn_caidat" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSetting" stylesheets="@../style/style.css">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_dichcau" alignment="CENTER" layoutX="8.0" layoutY="134.0" mnemonicParsing="false" onAction="#handlebtn_dichcau" prefHeight="45.0" prefWidth="183.0" styleClass="buttonCustomed" stylesheets="@../style/style.css" text="Dịch Câu">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_dichtuanh" alignment="CENTER" layoutX="8.0" layoutY="193.0" mnemonicParsing="false" onAction="#handlebtn_dichtuanh" prefHeight="45.0" prefWidth="183.0" styleClass="buttonCustomed" stylesheets="@../style/style.css" text="Dịch Từ Ảnh">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="img_clicked0" fitHeight="31.0" fitWidth="43.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/clicked.png" />
+               </image></ImageView>
+            <ImageView fx:id="img_clicked1" fitHeight="31.0" fitWidth="43.0" layoutX="14.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/clicked.png" />
+               </image></ImageView>
+            <ImageView fx:id="img_clicked2" fitHeight="31.0" fitWidth="43.0" layoutX="14.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/clicked.png" />
+               </image></ImageView>
+            <ImageView fx:id="img_clicked3" fitHeight="31.0" fitWidth="43.0" layoutX="14.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/clicked.png" />
+               </image></ImageView>
+         </children>
+      </Pane>
+      <Pane id="contentArea" fx:id="contentArea" layoutX="224.0" layoutY="144.0" prefHeight="518.0" prefWidth="722.0" styleClass="pane1" stylesheets="@../style/style.css" />
+      <ImageView fx:id="img_logo" fitHeight="126.0" fitWidth="183.0" layoutX="34.0" layoutY="14.0" onMouseEntered="#handle_mouseEnter" onMouseExited="#handle_mouseExited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logo.png" />
+         </image></ImageView>
+      <ImageView fx:id="img_textbanner" fitHeight="126.0" fitWidth="640.0" layoutX="260.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/textbanner.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

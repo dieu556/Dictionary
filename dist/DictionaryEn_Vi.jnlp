@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="DictionaryEn_Vi.jnlp">
+  <information>
+    <title>DictionaryEn_Vi</title>
+    <vendor>quochung</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="DictionaryEn_Vi.jar" size="309946" download="eager" />
+    <jar href="lib/RegconizerVoice.j4n.jar" size="1016" download="eager" />
+    <jar href="lib/cmu_time_awb.jar" size="1723774" download="eager" />
+    <jar href="lib/cmu_us_kal.jar" size="4899359" download="eager" />
+    <jar href="lib/cmudict04.jar" size="894905" download="eager" />
+    <jar href="lib/cmulex.jar" size="599429" download="eager" />
+    <jar href="lib/cmutimelex.jar" size="1231" download="eager" />
+    <jar href="lib/commons-beanutils-1.9.2.jar" size="233857" download="eager" />
+    <jar href="lib/commons-io-2.6.jar" size="214788" download="eager" />
+    <jar href="lib/commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib/en_us.jar" size="866598" download="eager" />
+    <jar href="lib/freetts-jsapi10.jar" size="56313" download="eager" />
+    <jar href="lib/freetts.jar" size="208668" download="eager" />
+    <jar href="lib/ghost4j-1.0.1.jar" size="180370" download="eager" />
+    <jar href="lib/hamcrest-core-1.3.jar" size="45280" download="eager" />
+    <jar href="lib/itext-2.1.7.jar" size="1130070" download="eager" />
+    <jar href="lib/jai-imageio-core-1.3.1.jar" size="602022" download="eager" />
+    <jar href="lib/jboss-vfs-3.2.12.Final.jar" size="144240" download="eager" />
+    <jar href="lib/jcl-over-slf4j-1.7.25.jar" size="16515" download="eager" />
+    <jar href="lib/jna-4.1.0.jar" size="914597" download="eager" />
+    <jar href="lib/jnativehook-2.1.0.jar" size="208804" download="eager" />
+    <jar href="lib/jni4net.j-0.8.6.0.jar" size="157771" download="eager" />
+    <jar href="lib/jsapi.jar" size="51811" download="eager" />
+    <jar href="lib/json-20180130.jar" size="62116" download="eager" />
+    <jar href="lib/jsoup-1.11.2.jar" size="392351" download="eager" />
+    <jar href="lib/jul-to-slf4j-1.7.25.jar" size="4596" download="eager" />
+    <jar href="lib/junit-4.12.jar" size="316791" download="eager" />
+    <jar href="lib/lept4j-1.6.3.jar" size="7038389" download="eager" />
+    <jar href="lib/log4j-1.2.17.jar" size="489883" download="eager" />
+    <jar href="lib/log4j-over-slf4j-1.7.25.jar" size="23645" download="eager" />
+    <jar href="lib/logback-classic-1.2.3.jar" size="290339" download="eager" />
+    <jar href="lib/logback-core-1.2.3.jar" size="471901" download="eager" />
+    <jar href="lib/mbrola.jar" size="11926" download="eager" />
+    <jar href="lib/pdfbox-2.0.8.jar" size="2485070" download="eager" />
+    <jar href="lib/slf4j-api-1.7.25.jar" size="41203" download="eager" />
+    <jar href="lib/tess4j-3.4.4.jar" size="40536115" download="eager" />
+    <jar href="lib/xmlgraphics-commons-1.5.jar" size="601866" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="DictionaryEn_Vi" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="dictionaryen_vi.DictionaryEn_Vi"  name="DictionaryEn_Vi" />
+  <update check="always"/>
+</jnlp>
