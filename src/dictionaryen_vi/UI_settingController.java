@@ -5,17 +5,14 @@
  */
 package dictionaryen_vi;
 
-import java.awt.event.ActionListener;
+import clickandsee.Jnativehook;
+import com.jfoenix.controls.JFXToggleButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ToggleButton;
-import javax.swing.AbstractButton;
-import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
 
 /**
  * FXML Controller class
@@ -28,28 +25,33 @@ public class UI_settingController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private ToggleButton togbtn_clickandsee;
+    private JFXToggleButton togbtn_clickandsee;
+
+    private static boolean flag=false;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         togbtn_clickandsee.setOnAction(new EventHandler<ActionEvent>() {
+        togbtn_clickandsee.setSelected(flag);
+        togbtn_clickandsee.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
                 //System.out.println("Hello World!");
-                if(togbtn_clickandsee.isSelected())
-                {
-                    System.out.println("hello");
-                    try {
-                    GlobalScreen.unregisterNativeHook();
-		} catch (NativeHookException e1) {
-                    e1.printStackTrace();
-                    }
+                Jnativehook jnative = new Jnativehook();
+                if (togbtn_clickandsee.isSelected()) {
+                    System.out.println("On");
+                    
+                    jnative.Execute();
+                    flag=true;
+
+                } else {
+                    jnative.cancelNativeHook();
+                    System.out.println("Off");
+                    flag=false;
                 }
-                else
-                    System.out.println("holla");
+
             }
         });
-    }    
-    
+    }
+
 }

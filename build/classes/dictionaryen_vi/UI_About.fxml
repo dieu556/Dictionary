@@ -3,12 +3,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="dictionaryen_vi.UI_AboutController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionaryen_vi.UI_AboutController">
    <children>
       <Label layoutX="95.0" layoutY="64.0" text=" Từ điển được thực hiện bởi nhóm sinh viên thuộc trường ĐH CNTT" />
-      <Label layoutX="103.0" layoutY="99.0" text="Sv1" />
-      <Label layoutX="103.0" layoutY="138.0" text="Sv2" />
-      <Label layoutX="103.0" layoutY="176.0" text="Sv3" />
+      <Label layoutX="103.0" layoutY="99.0" text="Phan Quốc Hưng - 15520288" />
+      <Label layoutX="103.0" layoutY="138.0" text="Lê Ngọc Thành - 15520810" />
+      <Label layoutX="103.0" layoutY="176.0" text="Nguyễn Tấn Diệu - 15520116" />
    </children>
 </AnchorPane>

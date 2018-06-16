@@ -71,7 +71,7 @@ public class UI_dichtuanhController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(null);
         fileChooser.getExtensionFilters().addAll(
         new ExtensionFilter("IMAGE Files", "*.png", "*.jpg", "*.pdf"));
-        
+        txt_result.clear();
         if (selectedFile != null) {           
             lb_path.setText(selectedFile.getPath());  
             
@@ -95,7 +95,8 @@ public class UI_dichtuanhController implements Initializable {
             
             Sentence sentence = new Sentence();
             String[] rows = txt_result.getText().split("\n");
-            txt_result.clear();
+            
+            txt_result.appendText("----------------------\n");
             for(int i=0; i<rows.length; i++ ){
                 String result = "";
                 result = sentence.Translator(rows[i].toString(), 1);

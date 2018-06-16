@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionaryen_vi.UI_settingController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dictionaryen_vi.UI_settingController">
    <children>
-      <ToggleButton fx:id="togbtn_clickandsee" layoutX="125.0" layoutY="31.0" mnemonicParsing="false" text="ToggleButton" />
-      <Label layoutX="26.0" layoutY="36.0" text="Click and See" />
+      <JFXToggleButton fx:id="togbtn_clickandsee" layoutX="14.0" layoutY="14.0" text="Click and see" />
    </children>
 </AnchorPane>

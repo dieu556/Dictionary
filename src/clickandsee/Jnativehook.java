@@ -6,7 +6,6 @@
 package clickandsee;
 
 import com.sun.javafx.PlatformUtil;
-import dictionaryen_vi.UI_anhvietController;
 import java.awt.AWTException;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -27,12 +26,15 @@ import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.TimeUnit;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.Clipboard;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+
 /**
  *
  * @author quochung
@@ -40,21 +42,22 @@ import javafx.util.Duration;
 public class Jnativehook implements NativeKeyListener, NativeMouseListener {
 
     private Stage stage = new Stage();
-    public static String text="";
-    
-    
+    public static String text = "";
+
     public Jnativehook() {
 
     }
 
     public void cancelNativeHook() {
         try {
+
             GlobalScreen.unregisterNativeHook();
         } catch (NativeHookException e1) {
             e1.printStackTrace();
         }
     }
 
+    @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
 
         if (e.getKeyCode() == NativeKeyEvent.VC_ESCAPE) {
@@ -65,7 +68,14 @@ public class Jnativehook implements NativeKeyListener, NativeMouseListener {
             }
 
         } else if (e.getKeyCode() == NativeKeyEvent.VC_SHIFT) {
-
+            if (PlatformUtil.isMac()) {
+                return;
+            }
+            if (stage == null) {
+                stage = new Stage();
+            }
+            process();
+            windowsclickandsee();
         } else if (e.getKeyCode() == NativeKeyEvent.VC_F) {
 
         }
@@ -76,15 +86,18 @@ public class Jnativehook implements NativeKeyListener, NativeMouseListener {
     public void nativeKeyReleased(NativeKeyEvent e) {
 
         if (e.getKeyCode() == NativeKeyEvent.VC_SHIFT) {
+            if (PlatformUtil.isWindows()) {
+                return;
+            }
             if (stage == null) {
                 stage = new Stage();
             }
-            process();          
+            process();
             windowsclickandsee();
-            
         } else if (e.getKeyCode() == NativeKeyEvent.VC_ALT) {
 
-        }
+        }//
+        System.out.println(""+e.getKeyCode());
     }
 
     @Override
@@ -96,15 +109,15 @@ public class Jnativehook implements NativeKeyListener, NativeMouseListener {
         try {
             GlobalScreen.setEventDispatcher(new VoidDispatchService());
             GlobalScreen.registerNativeHook();
+
             GlobalScreen.addNativeKeyListener(new Jnativehook());
             Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
             logger.setLevel(Level.WARNING);
 
             logger.setUseParentHandlers(false);
-            //  GlobalScreen.addNativeMouseListener(this);
-            // GlobalScreen.addNativeMouseListener(new Jnativehook());
+
         } catch (NativeHookException ex) {
-            //Logger.getLogger(Jnativehook.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Jnativehook.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -169,51 +182,60 @@ public class Jnativehook implements NativeKeyListener, NativeMouseListener {
         VirtualKeyboard x = null;
         // viet cai ham nhan dien OS di
         try {
-            x = new VirtualKeyboard();           
-            
-            if(PlatformUtil.isWindows())
+            x = new VirtualKeyboard();
+
+            if (PlatformUtil.isWindows()) {
                 x.pressKeys("control+c");
-            else if(PlatformUtil.isMac())
+            } else if (PlatformUtil.isMac()) {
                 x.pressKeys("meta+c");
+            }
         } catch (AWTException ex) {
             Logger.getLogger(Jnativehook.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if(PlatformUtil.isWindows())
+            if (PlatformUtil.isWindows()) {
                 x.keyRelease(KeyEvent.VK_CONTROL);
-            else if(PlatformUtil.isMac())
+            } else if (PlatformUtil.isMac()) {
                 x.keyRelease(KeyEvent.VK_META);
+            }
             x.keyRelease(KeyEvent.VK_C);
         }
 
     }
+    private static PauseTransition pt = new PauseTransition(Duration.millis(250));
+    private static SequentialTransition seq = new SequentialTransition(pt);
 
-    private void windowsclickandsee()  {
+    private void windowsclickandsee() {
 
-        
-        PauseTransition pt = new PauseTransition(Duration.millis(350));
         pt.setOnFinished(ae -> {
-            text = Clipboard.getSystemClipboard().getString().trim();
-            System.out.println("Chuoi trong clipboard: " + text);
+            if (Clipboard.getSystemClipboard().hasString()) {
+                text = Clipboard.getSystemClipboard().getString().trim();
+                System.out.println("Chuoi trong clipboard: " + text);
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/dictionaryen_vi/UI_cnsForm.fxml"));
+                    Scene scene = new Scene(root);
+                    //stage.initModality(Modality.APPLICATION_MODAL);
+                    //stage.initStyle(StageStyle.UNDECORATED);
+                    stage.setScene(scene);
+                    Point point = MouseInfo.getPointerInfo().getLocation();
+                    stage.setX(point.x);
+                    stage.setY(point.y);
+                    stage.setAlwaysOnTop(true);
+                    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                        @Override
+                        public void handle(WindowEvent event) {
 
-            try {
-            Parent root = FXMLLoader.load(getClass().getResource("/dictionaryen_vi/UI_cnsForm.fxml"));
-            Scene scene = new Scene(root);
-            //stage.initModality(Modality.APPLICATION_MODAL);
-            //stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-            Point point = MouseInfo.getPointerInfo().getLocation();
-            stage.setX(point.x);
-            stage.setY(point.y);
-            stage.setAlwaysOnTop(true);
-            stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(Jnativehook.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    });
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(Jnativehook.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
-        
-        SequentialTransition seq = new SequentialTransition(pt);
+
         seq.play();
-  
+
     }
 
 }

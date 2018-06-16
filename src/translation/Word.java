@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package translation;
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,7 +22,7 @@ import org.jsoup.select.Elements;
  */
 public class Word {
     public List Translator(String _word, int option){  
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         StringBuilder result_mean = new StringBuilder();
         StringBuilder result_related = new StringBuilder();
             
@@ -71,11 +74,25 @@ public class Word {
             result.add(result_mean.toString());
             result.add(result_related.toString());
    
-        } catch (Exception ex) {
+        } 
+        
+        catch (UnknownHostException ex) {
+            Logger.getLogger(Word.class.getName()).log(Level.SEVERE, null, ex);
+            result.add("Không có kết nối mạng");
+            result.add("Không tìm thấy");
+        } 
+        catch (SocketTimeoutException ex) {
+            Logger.getLogger(Word.class.getName()).log(Level.SEVERE, null, ex);
+            result.add("Vui lòng thử lại sau (Read time out)");
+            result.add("Không tìm thấy");
+        } 
+        catch (NullPointerException ex) {
             Logger.getLogger(Word.class.getName()).log(Level.SEVERE, null, ex);
             result.add("Rất tiếc, chúng tôi không tìm thấy từ '"+_word+"'");
             result.add("Không tìm thấy");
-        } 
+        } catch (IOException ex) { 
+            Logger.getLogger(Word.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
     }
 }
